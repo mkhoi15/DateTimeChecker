@@ -1,0 +1,53 @@
+﻿@model DateTimeChecker.Model.Date;
+@{
+    ViewBag.Title = "DateChecker";
+}
+
+<div class="center-box">
+    <form asp-controller="Home" asp-action="CheckDay" method="get">
+
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Day" class="form-label pt">Input Day</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Day" class="form-input" type="text" />
+                <span asp-validation-for="Day" class="text-red"></span> <br>
+                <span class="text-red">@ViewBag.DayError</span>
+            </div>
+        </div>
+
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Month" class="form-label pt">Input month</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Month" class="form-input" type="text" />
+                <span asp-validation-for="Month" class="text-red"></span> <br>
+                <span class="text-red">@ViewBag.MonthError</span>
+            </div>
+        </div>
+
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Year" class="form-label pt">Input Year</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Year" class="form-input" type="text" />
+                <span asp-validation-for="Year" class="text-red"></span> <br>
+                <span class="text-red">@ViewBag.YearError</span>
+            </div>
+        </div>
+
+        <button class="button button-green-back">Check</button>
+    </form>
+
+  
+
+   @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/cdnjs.cloudflare.com_ajax_libs_jquery_3.7.1_jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/cdnjs.cloudflare.com_ajax_libs_jquery-validate_1.19.5_jquery.validate.min.js"
+            integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive" asp-fallback-src="~/cdnjs.cloudflare.com_ajax_libs_jquery-validation-unobtrusive_4.0.0_jquery.validate.unobtrusive.min.js"
+            integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
+</div>

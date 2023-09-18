@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Stylesheet.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">
+                <img src="" width="30px" asp-append-version="true" />
+            </div>
+            <ul>
+                <li>
+                    <a href="/home">Date Time Checker</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
