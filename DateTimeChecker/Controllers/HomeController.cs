@@ -25,6 +25,30 @@ namespace DateTimeChecker.Controllers
         public IActionResult CheckDay(Date date)
         {
             bool IsError = false;
+
+            if(date.Day == null)
+            {
+                IsError = true;
+                ViewBag.DayError = "Day field can not be blank";
+            }   
+
+            if (date.Month == null)
+            {
+                IsError = true;
+                ViewBag.MonthError = "Month field can not be blank";
+            }
+
+            if (date.Year == null)
+            {
+                IsError = true;
+                ViewBag.YearError = "Year field can not be blank";
+            }
+
+            if(IsError)
+            {
+                return View("Index");
+            }
+
             int day = 0;
             int month = 0;
             int year = 0;
@@ -47,7 +71,30 @@ namespace DateTimeChecker.Controllers
                 ViewBag.YearError = "This field must me a number";
             }
 
-            if(IsError == true)
+            if(IsError)
+            {
+                return View("Index");
+            }
+
+            if(day < 0 || day > 31)
+            {
+                IsError = true;
+                ViewBag.DayError = "Day must be between 1 and 31";
+            }
+
+            if (month < 0 || month > 12)
+            {
+				IsError = true;
+				ViewBag.MonthError = "Month must be between 1 and 12";
+			}
+
+            if (year < 1000 || year > 3000)
+            {
+                IsError = true;
+                ViewBag.YearError = "Year must be between 1000 and 3000";
+            }
+
+            if (IsError)
             {
                 return View("Index");
             }
