@@ -1,6 +1,7 @@
 ﻿using DateTimeChecker.Model;
 using DateTimeChecker.ServiceContract;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace DateTimeChecker.Controllers
 {
@@ -30,7 +31,7 @@ namespace DateTimeChecker.Controllers
             {
                 IsError = true;
                 ViewBag.DayError = "Day field can not be blank";
-            }   
+            }
 
             if (date.Month == null)
             {
@@ -49,26 +50,24 @@ namespace DateTimeChecker.Controllers
                 return View("Index");
             }
 
-            int day = 0;
-            int month = 0;
-            int year = 0;
-            bool IsNumberDay = int.TryParse(date.Day, out day);
-            bool IsNumberMonth = int.TryParse(date.Month, out month);
-            bool IsNumberYear = int.TryParse(date.Year, out year);
-            if(IsNumberDay == false )
+            bool IsNumberDay = int.TryParse(date.Day, out int day);
+            bool IsNumberMonth = int.TryParse(date.Month, out int month);
+            bool IsNumberYear = int.TryParse(date.Year, out int year);
+            if(IsNumberDay == false)
             {
                 IsError = true;
-                ViewBag.DayError = "This field must me a number";      
+                ViewBag.DayError = "Day field must me a number";      
             }
+
             if (IsNumberMonth == false)
             {
                 IsError = true;
-                ViewBag.MonthError = "This field must me a number";
+                ViewBag.MonthError = "Month field must me a number";
             }
             if (IsNumberYear == false)
             {
                 IsError = true;
-                ViewBag.YearError = "This field must me a number";
+                ViewBag.YearError = "Year field must me a number";
             }
 
             if(IsError)
@@ -98,15 +97,21 @@ namespace DateTimeChecker.Controllers
             {
                 return View("Index");
             }
-
-            var totalDayInMonth = _dateTimeService.CheckDayInMonth(month, year);
-            if (totalDayInMonth == 0 || day > totalDayInMonth)
-            {
-                ViewBag.Result = $"{date} is Not correct date time!";
-                return View();
-            }
-            ViewBag.Result = $"{date} is correct day time!";
-            return View(date);
+            //var totalDayInMonth = _dateTimeService.CheckDayInMonth(month, year);
+            //if (totalDayInMonth == 0 || day > totalDayInMonth)
+            //{
+            //	ViewBag.Result = $"{date} is Not correct date time!";
+            //	return View();
+            //}
+            //ViewBag.Result = $"{date} is correct date time!";
+            bool isValidDate = _dateTimeService.CheckDate(day, month, year);
+            if (isValidDate == false) {
+				ViewBag.Result = $"{date} is Not correct date time!";
+                return View(date);
+			}
+			ViewBag.Result = $"{date} is correct date time!";
+			return View(date);
         }
+
     }
 }

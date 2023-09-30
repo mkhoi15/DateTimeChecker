@@ -33,5 +33,14 @@ namespace DateTimeChecker.Services
                 default: return 0;
             }
         }
-    }
+		public bool CheckDate(int actualDay, int actualMonth, int actualYear)
+		{
+			var totalDayInMonth = CheckDayInMonth(actualMonth, actualYear);
+			if (totalDayInMonth == 0 || actualDay > totalDayInMonth)
+			{
+				return true;
+			}
+			return true;
+		}
+	}
 }
