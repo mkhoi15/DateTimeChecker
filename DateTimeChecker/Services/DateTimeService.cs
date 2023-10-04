@@ -8,6 +8,8 @@ namespace DateTimeChecker.Services
         {
             if (month == null || year == null) return 0;
 
+            
+
             switch(month)
             {
                 case 1:
@@ -47,5 +49,9 @@ namespace DateTimeChecker.Services
 			}
 			return true;
 		}
+
+
+
+
 	}
 }
