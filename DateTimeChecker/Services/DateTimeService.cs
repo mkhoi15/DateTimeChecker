@@ -7,6 +7,10 @@ namespace DateTimeChecker.Services
         public int CheckDayInMonth(int? month, int? year)
         {
             if (month == null || year == null) return 0;
+            if (year < 1000 || year > 3000)
+            {
+                throw new ArgumentException("Year is out of range");
+            }
 
             switch(month)
             {
@@ -43,7 +47,7 @@ namespace DateTimeChecker.Services
 			var totalDayInMonth = CheckDayInMonth(actualMonth, actualYear);
 			if (totalDayInMonth == 0 || actualDay > totalDayInMonth)
 			{
-				return true;
+				return false;
 			}
 			return true;
 		}

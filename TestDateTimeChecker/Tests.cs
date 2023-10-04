@@ -14,6 +14,7 @@ namespace TestDateTimeChecker
 			_dateTimeService = new DateTimeService();
 		}
 
+		#region CheckDayInMonth
 		[Test]
 		public void CheckDayInMonth_ShouldReturn28_ToBeFaile()
 		{
@@ -49,5 +50,45 @@ namespace TestDateTimeChecker
 
 			Assert.That(actualDay, Is.EqualTo(expectDay));
 		}
+		#endregion
+
+		#region CheckDate
+		[Test]
+		public void CheckDate_DayIsNull_TobeFalse()
+		{
+			int? day = null;
+			var month = 2;
+			var year = 2000;
+
+			var isValidDate = _dateTimeService.CheckDate(day, month, year);
+
+			Assert.That(isValidDate, Is.False);
+		}
+
+		[Test]
+		public void CheckDate_MonthIsNull_ToBeFalse()
+		{
+			int? day = 15;
+			int? month = null;
+			var year = 2000;
+
+			var isValidDate = _dateTimeService.CheckDate(day, month, year);
+
+			Assert.That(isValidDate, Is.False);
+		}
+
+		[Test]
+		public void CheckDate_YearIsNull_ToBeFalse()
+		{
+			int? day = 15;
+			int? month = 2;
+			int? year = null;
+
+			var isValidDate = _dateTimeService.CheckDate(day, month, year);
+
+			Assert.That(isValidDate, Is.False);
+		}
+
+		#endregion
 	}
 }
