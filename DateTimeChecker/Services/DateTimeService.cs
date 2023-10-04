@@ -4,9 +4,11 @@ namespace DateTimeChecker.Services
 {
     public class DateTimeService : IDateTimeService
     {
-        public int CheckDayInMonth(int month, int year)
+        public int CheckDayInMonth(int? month, int? year)
         {
-            switch(month)
+            if (month == null || year == null) return 0;
+
+            switch (month)
             {
                 case 1:
                 case 3:
@@ -33,14 +35,17 @@ namespace DateTimeChecker.Services
                 default: return 0;
             }
         }
-		public bool CheckDate(int actualDay, int actualMonth, int actualYear)
-		{
-			var totalDayInMonth = CheckDayInMonth(actualMonth, actualYear);
-			if (totalDayInMonth == 0 || actualDay > totalDayInMonth)
-			{
-				return true;
-			}
-			return true;
-		}
-	}
+
+        public bool CheckDate(int? actualDay, int? actualMonth, int? actualYear)
+        {
+            if (actualDay == null) return false;
+
+            var totalDayInMonth = CheckDayInMonth(actualMonth, actualYear);
+            if (totalDayInMonth == 0 || actualDay > totalDayInMonth)
+            {
+                return true;
+            }
+            return true;
+        }
+    }
 }

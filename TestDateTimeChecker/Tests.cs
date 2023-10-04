@@ -1,5 +1,6 @@
 using DateTimeChecker.ServiceContract;
 using DateTimeChecker.Services;
+using NUnit.Framework;
 
 namespace TestDateTimeChecker
 {
@@ -15,7 +16,7 @@ namespace TestDateTimeChecker
 
 		[Test]
 		public void CheckDayInMonth_ShouldReturn28_ToBeFaile()
-		{
+			{
 			var ExpectDay = 29;
 			var month = 2;
 			var year = 2001;
@@ -33,6 +34,20 @@ namespace TestDateTimeChecker
 			var year = 2001;
 
 			var actualValue = _dateTimeService.CheckDayInMonth(month, year);
+
+			Assert.That(actualValue, Is.EqualTo(ExpectDay));
+		}
+
+		[Test]
+		public void CheckDayInMonth_ShouldReturn0_ToBeSuccess()
+		{
+			var expectDay = 0;
+			var month = 13;
+			var year = 2000;
+
+			var actualDay = _dateTimeService.CheckDayInMonth(month, year);
+
+			Assert.That(actualDay, Is.EqualTo(expectDay));
 		}
 	}
 }

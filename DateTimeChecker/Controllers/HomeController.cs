@@ -27,7 +27,7 @@ namespace DateTimeChecker.Controllers
         {
             bool IsError = false;
 
-            if(date.Day == null)
+            if (date.Day == null)
             {
                 IsError = true;
                 ViewBag.DayError = "Day field can not be blank";
@@ -45,7 +45,7 @@ namespace DateTimeChecker.Controllers
                 ViewBag.YearError = "Year field can not be blank";
             }
 
-            if(IsError)
+            if (IsError)
             {
                 return View("Index");
             }
@@ -53,10 +53,10 @@ namespace DateTimeChecker.Controllers
             bool IsNumberDay = int.TryParse(date.Day, out int day);
             bool IsNumberMonth = int.TryParse(date.Month, out int month);
             bool IsNumberYear = int.TryParse(date.Year, out int year);
-            if(IsNumberDay == false)
+            if (IsNumberDay == false)
             {
                 IsError = true;
-                ViewBag.DayError = "Day field must me a number";      
+                ViewBag.DayError = "Day field must me a number";
             }
 
             if (IsNumberMonth == false)
@@ -70,12 +70,12 @@ namespace DateTimeChecker.Controllers
                 ViewBag.YearError = "Year field must me a number";
             }
 
-            if(IsError)
+            if (IsError)
             {
                 return View("Index");
             }
 
-            if(day < 0 || day > 31)
+            if (day < 0 || day > 31)
             {
                 IsError = true;
                 ViewBag.DayError = "Day must be between 1 and 31";
@@ -83,9 +83,9 @@ namespace DateTimeChecker.Controllers
 
             if (month < 0 || month > 12)
             {
-				IsError = true;
-				ViewBag.MonthError = "Month must be between 1 and 12";
-			}
+                IsError = true;
+                ViewBag.MonthError = "Month must be between 1 and 12";
+            }
 
             if (year < 1000 || year > 3000)
             {
@@ -105,12 +105,13 @@ namespace DateTimeChecker.Controllers
             //}
             //ViewBag.Result = $"{date} is correct date time!";
             bool isValidDate = _dateTimeService.CheckDate(day, month, year);
-            if (isValidDate == false) {
-				ViewBag.Result = $"{date} is Not correct date time!";
+            if (isValidDate == false)
+            {
+                ViewBag.Result = $"{date} is Not correct date time!";
                 return View(date);
-			}
-			ViewBag.Result = $"{date} is correct date time!";
-			return View(date);
+            }
+            ViewBag.Result = $"{date} is correct date time!";
+            return View(date);
         }
 
     }
