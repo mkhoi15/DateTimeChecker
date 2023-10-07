@@ -68,7 +68,7 @@ namespace TestDateTimeChecker
 		[Test] //4
 		public void CheckDayInMonth_MonthIsNull_ShouldReturn0()
 		{
-			var day = 30;
+			var day = 0;
 			int? month = null;
 			var year = 2000;
 
