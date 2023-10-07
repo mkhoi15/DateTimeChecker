@@ -71,7 +71,7 @@ namespace TestDateTimeChecker
 
             var isValidate = _dateTimeService.CheckDate(day, month, year);
 
-            Assert.That(isValidate.ToString(), Is.False);
+            Assert.That(isValidate, Is.False)
         }
         [Test]
         public void CheckDate_YearIsNull_ToBeFalse()
@@ -80,9 +80,9 @@ namespace TestDateTimeChecker
             int? month = 10;
             int? year = null;
 
-            var ex = Assert.Throws<ArgumentException>(() => _dateTimeService.CheckDate(day, month, year));
+            var ex = _dateTimeService.CheckDate(day, month, year));
 
-            Assert.That(ex.Message.ToString(), Is.EqualTo("Year can not be null"));
+            Assert.That(ex, Is.False);
         }
     }
 }
