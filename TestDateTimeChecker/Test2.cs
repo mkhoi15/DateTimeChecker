@@ -91,15 +91,27 @@ namespace TestDateTimeChecker
 		}
 
 		[Test] //6
-		public void CheckDayInMonth_YearIsOutOfRange_ShouldReturn0()
+		public void CheckDayInMonth_YearIsOutOfRange_ShoulThrowArgumentException()
 		{
-			var day = 30;
+			
 			var month = 1;
-			int? year = null;
+			int year = 4000;
 
-			var actualValue = _dateTimeService.CheckDate(day, month, year);
+			var ex = Assert.Throws<ArgumentException>(() => _dateTimeService.CheckDayInMonth(month, year));
+			Assert.That(ex.Message, Is.EqualTo("Year is out of range"));
 
-			Assert.False(actualValue);
+		}
+
+		[Test] //7
+		public void CheckDayInMonth_InvalidMonth_ShouldReturn0()
+		{
+			var Expectday = 0;
+			var month = 13;
+			int year = 2021;
+
+			var actualValue = _dateTimeService.CheckDayInMonth(month, year);
+
+			Assert.That(actualValue, Is.EqualTo(Expectday));
 
 		}
 
