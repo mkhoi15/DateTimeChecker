@@ -17,31 +17,43 @@ namespace TestDateTimeChecker
         }
 
         [Test]
-        public void Test_Day_In_Month_1()
+        public void Test_Day_In_Month6_Year2020()
         {
+            int? day = 6;
+            int? month = 2020;
             int expectedValue = 30;
-            int dayReturn = _dateTimeService.CheckDayInMonth(6, 2020);
+            //test result
+            int dayReturn = _dateTimeService.CheckDayInMonth(day, month);
+            //compare
             Assert.That(expectedValue, Is.EqualTo(dayReturn));
         }
         [Test]
-        public void Test_Day_In_Month_2()
+        public void Test_Day_In_Month1_Year10()
         {
             int expectedValue = 31;
             int dayReturn = _dateTimeService.CheckDayInMonth(1, 2000);
             Assert.That(expectedValue, Is.EqualTo(dayReturn));
         }
         [Test]
-        public void Test_Day_In_Month_3()
+        public void Test_Day_In_Month13_Year2021()
         {
+            int? day = 13;
+            int? month = 2021; 
             int expectedValue = 0;
-            int dayReturn = _dateTimeService.CheckDayInMonth(13, 2021);
+            //test result
+            int dayReturn = _dateTimeService.CheckDayInMonth(day, month);
+            //compare
             Assert.That(expectedValue, Is.EqualTo(dayReturn));
         }
         [Test]
-        public void Test_Day_In_Month_4()
+        public void Test_Day_In_MonthNull_Year2021()
         {
+            int? day = null;
+            int? month = 2021;
             int expectedValue = 0;
-            int dayReturn = _dateTimeService.CheckDayInMonth(null, 2021);
+            //test result
+            int dayReturn = _dateTimeService.CheckDayInMonth(day, month);
+            //compare
             Assert.That(expectedValue, Is.EqualTo(dayReturn));
         }
     }
