@@ -61,7 +61,28 @@ namespace TestDateTimeChecker
             var actualValue = _dateTimeService.CheckDayInMonth(month, year);
 
             Assert.That(actualValue, Is.EqualTo(ExpectDay));
+        }
+        [Test]
+        public void CheckDate_ShouldReturnFalse_ToBeFalse()
+        {
+            var day = 29;
+            var month = 2;
+            var year = 2021;
 
+            var isValidate = _dateTimeService.CheckDate(day, month, year);
+
+            Assert.That(isValidate.ToString(), Is.False);
+        }
+        [Test]
+        public void CheckDate_YearIsNull_ToBeFalse()
+        {
+            int? day = 12;
+            int? month = 10;
+            int? year = null;
+
+            var ex = Assert.Throws<ArgumentException>(() => _dateTimeService.CheckDate(day, month, year));
+
+            Assert.That(ex.Message.ToString(), Is.EqualTo("Year can not be null"));
         }
     }
 }

@@ -68,7 +68,7 @@ namespace TestDateTimeChecker
 		[Test] //4
 		public void CheckDayInMonth_MonthIsNull_ShouldReturn0()
 		{
-			var day = 30;
+			var day = 0;
 			int? month = null;
 			var year = 2000;
 
@@ -107,7 +107,7 @@ namespace TestDateTimeChecker
 
 		#region CheckDate
 
-		[Test]
+		[Test] //1
 		public void CheckDate_ShouldReturnTrue_ToBeSuccess()
 		{
 			var day = 29;
@@ -119,6 +119,9 @@ namespace TestDateTimeChecker
 			Assert.That(actualValue, Is.True);
 		}
 		
+
+
+
 		#endregion
 
 	}
