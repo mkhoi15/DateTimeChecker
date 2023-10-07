@@ -67,9 +67,9 @@ namespace TestDateTimeChecker
             var month = 10;
             var year = 2000;
 
-            var ex = Assert.Throws<ArgumentException>(() => _dateTimeService.CheckDate(day,month, year));
-            Assert.That(ex.Message.ToString, Is.EqualTo("Day is out of range"));
-        }
+			var isValidDate = _dateTimeService.CheckDate(day, month, year);
+			Assert.That(isValidDate, Is.False);
+		}
 
 	}
 }

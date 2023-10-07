@@ -27,7 +27,7 @@ namespace TestDateTimeChecker
         public void Test_Day_In_Month_2()
         {
             int expectedValue = 31;
-            int dayReturn = _dateTimeService.CheckDayInMonth(1, 10);
+            int dayReturn = _dateTimeService.CheckDayInMonth(1, 2000);
             Assert.That(expectedValue, Is.EqualTo(dayReturn));
         }
         [Test]
