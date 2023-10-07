@@ -71,7 +71,7 @@ namespace TestDateTimeChecker
 
             var isValidate = _dateTimeService.CheckDate(day, month, year);
 
-            Assert.That(isValidate, Is.False)
+            Assert.That(isValidate, Is.False);
         }
         [Test]
         public void CheckDate_YearIsNull_ToBeFalse()
@@ -80,7 +80,7 @@ namespace TestDateTimeChecker
             int? month = 10;
             int? year = null;
 
-            var ex = _dateTimeService.CheckDate(day, month, year));
+            var ex = _dateTimeService.CheckDate(day, month, year);
 
             Assert.That(ex, Is.False);
         }
