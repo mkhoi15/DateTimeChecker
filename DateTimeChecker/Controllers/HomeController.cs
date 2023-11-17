@@ -1,4 +1,4 @@
-﻿using DateTimeChecker.Model;
+using DateTimeChecker.Model;
 using DateTimeChecker.ServiceContract;
 using Microsoft.AspNetCore.Mvc;
 using System;
