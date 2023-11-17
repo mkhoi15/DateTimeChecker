@@ -2,10 +2,16 @@
 
 namespace DateTimeChecker.Services
 {
-    public class DateTimeService : IDateTimeService
+	public class DateTimeService : IDateTimeService
     {
-        public int CheckDayInMonth(int month, int year)
+        public int CheckDayInMonth(int? month, int? year)
         {
+            if (month == null || year == null) return 0;
+            if (year < 1000 || year > 3000)
+            {
+                throw new ArgumentException("Year is out of range");
+            }
+
             switch(month)
             {
                 case 1:
@@ -33,5 +39,16 @@ namespace DateTimeChecker.Services
                 default: return 0;
             }
         }
-    }
+
+		public bool CheckDate(int? actualDay, int? actualMonth, int? actualYear)
+		{
+            if (actualDay == null || actualDay <= 0) return false;
+			var totalDayInMonth = CheckDayInMonth(actualMonth, actualYear);
+			if (totalDayInMonth == 0 || actualDay > totalDayInMonth)
+			{
+				return false;
+			}
+			return true;
+		}
+	}
 }
